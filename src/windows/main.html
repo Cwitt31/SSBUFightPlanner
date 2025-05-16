@@ -39,752 +39,547 @@
         </div>
     </div>
     <!-- Top Navigation Tabs -->
-    
-    <ul class="nav nav-tabs position-relative animate__animated animate__fadeInDown" id="mainTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="mods-tab" data-bs-toggle="pill" 
-                    data-bs-target="#mods" type="button" role="tab">
-                <i class="bi bi-grid me-2"></i><span data-i18n="nav.mods">Mods</span>
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="plugins-tab" data-bs-toggle="pill" 
-                    data-bs-target="#plugins" type="button" role="tab">
-                <i class="bi bi-plug me-2"></i><span data-i18n="nav.plugins">Plugins</span>
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="characters-tab" data-bs-toggle="pill" 
-                data-bs-target="#characters" type="button" role="tab">
-                <i class="bi bi-people me-2"></i><span data-i18n="nav.characters">Characters</span>
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="echo-fighter-tab" data-bs-toggle="pill" 
-                    data-bs-target="#echoFighter" type="button" role="tab">
-                <i class="bi bi-person-add me-2"></i><span data-i18n="nav.echo">Echo Fighter</span>
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="social-tab" data-bs-toggle="pill" 
-                    data-bs-target="#social" type="button" role="tab">
-                <i class="bi bi-people-fill me-2"></i><span>Social</span>
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="settings-tab" data-bs-toggle="pill" 
-                    data-bs-target="#settings" type="button" role="tab">
-                <i class="bi bi-gear me-2"></i><span data-i18n="nav.settings">Settings</span>
-            </button>
-        </li>
-        <li class="nav-item ms-auto me-3">
-            <img 
-                src="https://github.com/FIREXDF/SSBUFightPlanner/blob/main/icon.png?raw=true" 
-                alt="App Logo" 
-                id="appLogo"
-                class="app-logo" 
-                data-bs-toggle="modal" 
-                data-bs-target="#creditsModal"
-                style="height: 30px; width: auto; cursor: pointer;"
-            >
-        </li>
-    </ul>
-
-    <!-- Tab Contents -->
-    <div class="tab-content h-100" id="mainTabContent">
-        <!-- Mods Tab -->
-        <div class="tab-pane fade show active h-100" id="mods" role="tabpanel">
-            <div class="container-fluid h-100">
-                <div class="row h-100">
-                    <!-- Mod List (Left Side) -->
-                    <div class="col-8 p-3 position-relative col-resizable">
-                        <div class="card h-100">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0 me-3" data-i18n="mods.title">Mod List</h5>
-                                    <input 
-                                        type="text" 
-                                        id="modSearchInput" 
-                                        class="form-control form-control-sm" 
-                                        data-i18n-placeholder="mods.search"
-                                        placeholder="Search mods..."
-                                        style="width: 200px;"
-                                    >
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <button class="btn btn-outline-secondary me-2" id="reloadList">
-                                        <i class="bi bi-arrow-clockwise"></i>
-                                        Reload List
-                                    </button>
-                                    
-                                    <div class="dropdown">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="toggleCategories" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
-                                            <i class="bi bi-funnel"></i>
-                                            Categories
+    <div id="mainTabArea" style="position: relative;">
+        <ul class="nav nav-tabs position-relative animate__animated animate__fadeInDown" id="mainTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="mods-tab" data-bs-toggle="pill" 
+                        data-bs-target="#mods" type="button" role="tab">
+                    <i class="bi bi-grid me-2"></i><span data-i18n="nav.mods">Mods</span>
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="plugins-tab" data-bs-toggle="pill" 
+                        data-bs-target="#plugins" type="button" role="tab">
+                    <i class="bi bi-plug me-2"></i><span data-i18n="nav.plugins">Plugins</span>
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="characters-tab" data-bs-toggle="pill" 
+                    data-bs-target="#characters" type="button" role="tab">
+                    <i class="bi bi-people me-2"></i><span data-i18n="nav.characters">Characters</span>
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="echo-fighter-tab" data-bs-toggle="pill" 
+                        data-bs-target="#echoFighter" type="button" role="tab">
+                    <i class="bi bi-person-add me-2"></i><span data-i18n="nav.echo">Echo Fighter</span>
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="settings-tab" data-bs-toggle="pill" 
+                        data-bs-target="#settings" type="button" role="tab">
+                    <i class="bi bi-gear me-2"></i><span data-i18n="nav.settings">Settings</span>
+                </button>
+            </li>
+            <li class="nav-item ms-auto me-3">
+                <img 
+                    src="https://github.com/FIREXDF/SSBUFightPlanner/blob/main/icon.png?raw=true" 
+                    alt="App Logo" 
+                    id="appLogo"
+                    class="app-logo" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#creditsModal"
+                    style="height: 30px; width: auto; cursor: pointer;"
+                >
+            </li>
+        </ul>
+        <button id="openSocialSidebarBtn" class="btn btn-primary social-sidebar-btn">
+            <i class="bi bi-people-fill"></i>
+        </button>    
+        <!-- Tab Contents -->
+        <div class="tab-content h-100" id="mainTabContent">
+            <!-- Mods Tab -->
+            <div class="tab-pane fade show active h-100" id="mods" role="tabpanel">
+                <div class="container-fluid h-100">
+                    <div class="row h-100">
+                        <!-- Mod List (Left Side) -->
+                        <div class="col-8 p-3 position-relative col-resizable">
+                            <div class="card h-100">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="mb-0 me-3" data-i18n="mods.title">Mod List</h5>
+                                        <input 
+                                            type="text" 
+                                            id="modSearchInput" 
+                                            class="form-control form-control-sm" 
+                                            data-i18n-placeholder="mods.search"
+                                            placeholder="Search mods..."
+                                            style="width: 200px;"
+                                        >
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <button class="btn btn-outline-secondary me-2" id="reloadList">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                            Reload List
                                         </button>
-                                        <div class="dropdown-menu p-2" id="categoryFilters" data-bs-popper="none">
-                                            <h6 class="dropdown-header">Filter by category</h6>
-                                            <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item" data-category="Fighter">Fighter</button>
-                                            <button class="dropdown-item" data-category="Movesets">Movesets</button>
-                                            <button class="dropdown-item" data-category="Stages">Stages</button>
-                                            <button class="dropdown-item" data-category="Effects">Effects</button>
-                                            <button class="dropdown-item" data-category="Final Smash">Final Smash</button>
-                                            <button class="dropdown-item" data-category="UI">UI</button>
-                                            <button class="dropdown-item" data-category="Param">Param</button>
-                                            <button class="dropdown-item" data-category="Audio">Audio</button>
-                                            <button class="dropdown-item" data-category="Other/Misc">Other/Misc</button>
-                                            <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger" id="clearCategoryFilters">
-                                                <i class="bi bi-x-circle"></i> Clear Filters
+                                        
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="toggleCategories" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                                                <i class="bi bi-funnel"></i>
+                                                Categories
                                             </button>
+                                            <div class="dropdown-menu p-2" id="categoryFilters" data-bs-popper="none">
+                                                <h6 class="dropdown-header">Filter by category</h6>
+                                                <div class="dropdown-divider"></div>
+                                                <button class="dropdown-item" data-category="Fighter">Fighter</button>
+                                                <button class="dropdown-item" data-category="Movesets">Movesets</button>
+                                                <button class="dropdown-item" data-category="Stages">Stages</button>
+                                                <button class="dropdown-item" data-category="Effects">Effects</button>
+                                                <button class="dropdown-item" data-category="Final Smash">Final Smash</button>
+                                                <button class="dropdown-item" data-category="UI">UI</button>
+                                                <button class="dropdown-item" data-category="Param">Param</button>
+                                                <button class="dropdown-item" data-category="Audio">Audio</button>
+                                                <button class="dropdown-item" data-category="Other/Misc">Other/Misc</button>
+                                                <div class="dropdown-divider"></div>
+                                                <button class="dropdown-item text-danger" id="clearCategoryFilters">
+                                                    <i class="bi bi-x-circle"></i> Clear Filters
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="mod-list overflow-auto" id="modList" style="height: calc(100vh - 160px);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        
+                        <!-- Mod Details and Preview (Right Side) -->
+                        <div class="col-4 p-3 d-flex flex-column">
+                            <!-- Mod Preview -->
+                            <div class="card flex-grow-1 mb-3">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Mod Details</h5>
+                                        <button class="btn btn-sm btn-outline-primary" id="editModInfo" style="display: none;">
+                                            <i class="bi bi-pencil-square"></i> Edit Info
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mod-preview mb-3">
+                                        <img id="modImage" src="" alt="No image" class="img-fluid rounded">
+                                    </div>
+                                    <div class="mod-metadata overflow-auto" id="modMetadata" style="max-height: 340px;">
+                                        <div class="metadata-content">
+                                            Select a mod to view details
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body p-0">
-                                <div class="mod-list overflow-auto" id="modList" style="height: calc(100vh - 160px);">
+                        </div>
+                    </div>
+
+                    <!-- Floating Action Buttons -->
+                    <div class="floating-actions">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-primary rounded-start" id="installMod" title="Install Mod">
+                                <i class="bi bi-plus-circle"></i>
+                            </button>
+                            <button class="btn btn-secondary" id="openFolder" title="Open Mods Folder">
+                                <i class="bi bi-folder"></i>
+                            </button>
+                            <button id="gameBananaDownloadBtn" class="btn btn-success" title="Download from GameBanana">
+                                <i class="bi bi-download"></i>
+                            </button>
+                            <button id="launchGame" class="btn btn-info rounded-end" title="Launch Game" style="margin-left: 0;">
+                                <i class="bi bi-play-fill"></i>
+                            </button>
+                            <button class="btn btn-secondary" id="createFpp" title="Create FPP Package">
+                                <i class="bi bi-file-earmark-zip"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plugins Tab -->
+            <div class="tab-pane fade h-100" id="plugins" role="tabpanel">
+                <div class="container-fluid h-100">
+                    <div class="row h-100">
+                        <!-- Plugin List (Left Side) -->
+                        <div class="col-12 p-3 position-relative">
+                            <div class="card h-100 animate__animated animate__fadeInLeft">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="mb-0 me-3" data-i18n="plugins.title">Plugin List</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <button class="btn btn-sm btn-outline-secondary" id="reloadPluginsList">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="plugin-list overflow-auto" id="pluginList" style="height: calc(100vh - 160px);">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
-                    
-                    <!-- Mod Details and Preview (Right Side) -->
-                    <div class="col-4 p-3 d-flex flex-column">
-                        <!-- Mod Preview -->
-                        <div class="card flex-grow-1 mb-3">
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0">Mod Details</h5>
-                                    <button class="btn btn-sm btn-outline-primary" id="editModInfo" style="display: none;">
-                                        <i class="bi bi-pencil-square"></i> Edit Info
+
+                    <!-- Floating Action Button for Plugins -->
+                    <div class="floating-actions animate__animated animate__fadeInUp">
+                        <div class="btn-group">
+                            <button class="btn btn-secondary" id="openPluginsFolderButton" title="Open Plugins Folder">
+                                <i class="bi bi-folder"></i>
+                            </button>
+                            <button class="btn btn-primary" id="installPlugin" title="Install Plugin">
+                                <i class="bi bi-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settings" role="tabpanel">
+                <div class="container-fluid p-4 h-100">
+                    <div class="card h-100 animate__animated animate__fadeIn">
+                        <div class="card-header">
+                            <h5 class="mb-0">Settings</h5>
+                        </div>                     
+                        <div class="card-body overflow-auto" style="max-height: calc(100vh - 160px);">
+                            <!-- Settings Tabs Navigation -->
+                            <ul class="nav nav-pills mb-3" id="settingsTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="paths-tab" data-bs-toggle="pill" data-bs-target="#paths-content" type="button" role="tab">
+                                        <i class="bi bi-folder me-2"></i>Setup
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="appearance-tab" data-bs-toggle="pill" data-bs-target="#appearance-content" type="button" role="tab">
+                                        <i class="bi bi-palette me-2" ></i>Appearance
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="integration-tab" data-bs-toggle="pill" data-bs-target="#integration-content" type="button" role="tab">
+                                        <i class="bi bi-plug me-2" ></i>Features
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="emulator-tab" data-bs-toggle="pill" data-bs-target="#emulator-content" type="button" role="tab">
+                                        <i class="bi bi-controller me-2" ></i>Emulator
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="logs-tab" data-bs-toggle="pill" data-bs-target="#logs-content" type="button" role="tab">
+                                        <i class="bi bi-journal-text me-2"></i>Logs
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="feedback-tab" data-bs-toggle="pill" data-bs-target="#feedback-content" type="button" role="tab">
+                                        <i class="bi bi-chat-dots me-2"></i>Feedback
+                                    </button>
+                                </li>
+                            </ul>
+                        
+                            <!-- Settings Tabs Content -->
+                            <div class="tab-content" id="settingsTabsContent">
+                                <!-- Paths Tab -->
+                                <div class="tab-pane fade show active" id="paths-content" role="tabpanel">
+                                    <div class="mb-4">
+                                        <h6 class="mb-3" data-i18n="settings.paths.title">Directory Settings</h6>
+                                        <label class="form-label" data-i18n="settings.paths.modsDir">Mods Directory</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" id="modsPath" readonly>
+                                            <button class="btn btn-outline-primary" id="selectModsFolder">
+                                                <i class="bi bi-folder2-open"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <label class="form-label" data-i18n="settings.paths.pluginsDir">Plugins Directory</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="pluginsPath" readonly>
+                                            <button class="btn btn-outline-primary" id="selectPluginsFolder">
+                                                <i class="bi bi-folder2-open"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Appearance Tab -->
+                                <div class="tab-pane fade" id="appearance-content" role="tabpanel">
+                                    <div class="mb-4">
+                                        <h6 class="mb-3" data-i18n="settings.theme.title">Theme Settings</h6>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                                            <label class="form-check-label" for="darkModeToggle" data-i18n="settings.theme.dark">Dark Mode</label>
+                                        </div>
+
+                                        <label class="form-label" data-i18n="settings.theme.css">Custom CSS File</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="customCssPath" readonly>
+                                            <button class="btn btn-outline-primary" id="selectCustomCssFile">
+                                                <i class="bi bi-folder2-open"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger" id="removeCustomCssFile">
+                                                <i class="bi bi-x-circle"></i>
+                                            </button>
+                                        </div>
+                                        <small class="textmuted" data-i18n="settings.theme.csstext">Select the custom CSS file for styling (Restart needed)</small>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h6 class="mb-3">Language</h6>
+                                        <select class="form-select" id="languageSelect">
+                                            <option value="en">English</option>
+                                            <option value="es">Español</option>
+                                            <option value="fr">Français</option>
+                                            <option value="zh-TW">繁體中文</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Integration Tab -->
+                                <div class="tab-pane fade" id="integration-content" role="tabpanel">
+                                    <div class="mb-4">
+                                        <h6 class="mb-3">Features</h6>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="protocolConfirmToggle">
+                                            <label class="form-check-label" for="protocolConfirmToggle">Skip Protocol Confirmation</label>
+                                            <small class="form-text textmuted d-block">Skip the confirmation dialog when opening FightPlanner links</small>
+                                        </div>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="conflictCheckToggle">
+                                            <label class="form-check-label" for="conflictCheckToggle">Enable Conflict Check (Takes longer to load mods)</label>
+                                        </div>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="discordRpcToggle">
+                                            <label class="form-check-label" for="discordRpcToggle">Enable Discord RPC</label>
+                                        </div>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="legacyModDiscoveryToggle">
+                                            <label class="form-check-label" for="legacyModDiscoveryToggle">Legacy mod discovery (faster)</label>
+                                            <small class="form-text textmuted d-block">Use dot-prefixed folders for disabled mods instead of a separate directory.</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="volumeControl" class="form-label">Finish Sound Volume</label>
+                                            <input type="range" class="form-range" id="volumeControl" min="0" max="100" step="1">
+                                            <small class="textmuted">Adjust the volume for finish download sound</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-danger" id="clearTempFiles">
+                                                <i class="bi bi-trash me-2"></i>Clear Temporary Files
+                                            </button>
+                                            <small class="form-text textmuted d-block">Remove all temporary files to free up space</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Emulator Tab -->
+                                <div class="tab-pane fade" id="emulator-content" role="tabpanel">
+                                    <div class="mb-4">
+                                        <h6 class="mb-3">Emulator Settings</h6>
+                                        
+                                        <!-- Emulator Selection -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Select Emulator</label>
+                                            <select class="form-select" id="emulatorSelect">
+                                                <option value="">Select an emulator...</option>
+                                                <option value="yuzu">yuzu (any fork of yuzu should work with no problem)</option>
+                                                <option value="ryujinx">Ryujinx</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Emulator Path -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Emulator Path</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="emulatorPath" readonly>
+                                                <button class="btn btn-outline-primary" id="selectEmulatorPath">
+                                                    <i class="bi bi-folder2-open"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Game Path -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Game Path</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="gamePath" readonly>
+                                                <button class="btn btn-outline-primary" id="selectGamePath">
+                                                    <i class="bi bi-folder2-open"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Yuzu Fullscreen Option -->
+                                        <div class="mb-3" id="yuzuOptions" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="yuzuFullscreen">
+                                                <label class="form-check-label" for="yuzuFullscreen">
+                                                    Launch in Fullscreen
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Feedback Tab -->
+                                <div class="tab-pane fade" id="feedback-content" role="tabpanel">
+                                    <div class="mb-4">
+                                        <h6 class="mb-3">Suggestions & Support</h6>
+                                        <p>Got a suggestion for FightPlanner? Want a feature to be added? Let me know!</p>
+                                        <a href="https://forms.gle/ZoypQYxyMw57poXs8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                            <i class="bi bi-send me-2"></i>Submit Feedback
+                                        </a>
+                                        
+                                        <hr class="my-4">
+                                        
+                                        <p>FightPlanner dev searching for people to test Early Access ! Go check it out</p>
+                                        <a href="https://forms.gle/TRkqw8g5hDaPXoc59" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                            <i class="bi bi-send me-2"></i>Apply for Early Access
+                                        </a>
+
+                                        <hr class="my-4">
+
+                                        <p>FightPlanner got an official discord server ! Come join it !</p>
+                                        <a href="https://discord.gg/2zT5Rg46bG" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                            <i class="bi bi-discord me-2"></i>Join the official discord server !
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Add this new tab content -->
+                                <div class="tab-pane fade" id="logs-content" role="tabpanel">
+                                    <div class="mb-4">
+                                        <h6 class="mb-3">Application Logs</h6>
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <button class="btn btn-primary" id="openCurrentLog">
+                                                <i class="bi bi-file-text me-2"></i>Open Current Log
+                                            </button>
+                                            <button class="btn btn-outline-secondary" id="openLogsFolder">
+                                                <i class="bi bi-folder me-2"></i>Open Logs Folder
+                                            </button>
+                                        </div>
+                                        <div class="log-preview card">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <span>Console Output</span>
+                                                <div>
+                                                    <button class="btn btn-sm btn-outline-secondary" id="clearLogs">
+                                                        <i class="bi bi-trash"></i> Clear
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-primary" id="refreshLogs">
+                                                        <i class="bi bi-arrow-clockwise"></i> Refresh
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-2">
+                                                <pre id="logContent" class="log-content" style="max-height: 400px; overflow-y: auto;">Loading logs...</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Replace the characters tab content -->
+            <div class="tab-pane fade" id="characters" role="tabpanel">
+                <div class="container-fluid p-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card animate__animated animate__fadeIn">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Character Usage</h5>
+                                    <button class="btn btn-sm btn-outline-primary" id="refreshCharacters">
+                                        <i class="bi bi-arrow-clockwise me-2"></i>Refresh
                                     </button>
                                 </div>
+                                <div class="card-body">
+                                    <div id="characterSlotsList" class="character-slots-list">
+                                        <!-- Content will be populated by CharacterScanner -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Echo Fighter Tab -->
+            <div class="tab-pane fade h-100" id="echoFighter" role="tabpanel">
+                <div class="container-fluid h-100 overflow-auto">
+                    <div class="row h-100">
+                        <!-- Echo Mod Selection -->
+                        <div class="col-12 p-3 position-relative">
+                            <label class="form-label" data-i18n="echo.mod.select">Select Echo Mod</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="echoModPath" readonly>
+                                <button class="btn btn-outline-primary" id="selectEchoModFolder">
+                                    <i class="bi bi-folder2-open"></i>
+                                </button>                            
+                            </div> 
+                        </div>                    
+                        <div class="card flex-grow-1 mb-3">
+                            <div class="card-header flex-grow-1 d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Echo Mod Details</h5>
                             </div>
                             <div class="card-body">
                                 <div class="mod-preview mb-3">
-                                    <img id="modImage" src="" alt="No image" class="img-fluid rounded">
+                                    <img id="echoModImage" src="" alt="No image" class="img-fluid rounded" style="max-height: 300px; max-width: 300px;">
                                 </div>
-                                <div class="mod-metadata overflow-auto" id="modMetadata" style="max-height: 340px;">
-                                    <div class="metadata-content">
+                                <div class="mod-metadata overflow-auto" id="echoModMetadata" style="max-height: 340px;">
+                                    <div class="echo-metadata-content">
                                         Select a mod to view details
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Floating Action Buttons -->
-                <div class="floating-actions">
-                    <div class="btn-group" role="group">
-                        <button class="btn btn-primary rounded-start" id="installMod" title="Install Mod">
-                            <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="btn btn-secondary" id="openFolder" title="Open Mods Folder">
-                            <i class="bi bi-folder"></i>
-                        </button>
-                        <button id="gameBananaDownloadBtn" class="btn btn-success" title="Download from GameBanana">
-                            <i class="bi bi-download"></i>
-                        </button>
-                        <button id="launchGame" class="btn btn-info rounded-end" title="Launch Game" style="margin-left: 0;">
-                            <i class="bi bi-play-fill"></i>
-                        </button>
-                        <button class="btn btn-secondary" id="createFpp" title="Create FPP Package">
-                            <i class="bi bi-file-earmark-zip"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Plugins Tab -->
-        <div class="tab-pane fade h-100" id="plugins" role="tabpanel">
-            <div class="container-fluid h-100">
-                <div class="row h-100">
-                    <!-- Plugin List (Left Side) -->
-                    <div class="col-12 p-3 position-relative">
-                        <div class="card h-100 animate__animated animate__fadeInLeft">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0 me-3" data-i18n="plugins.title">Plugin List</h5>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-sm btn-outline-secondary" id="reloadPluginsList">
-                                        <i class="bi bi-arrow-clockwise"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="plugin-list overflow-auto" id="pluginList" style="height: calc(100vh - 160px);">
-                                </div>
-                            </div>
+                        <div class="col-12 p-3 position-relative" id="numColorSlots" name="color-start-dropdown">
+                            <label for="echoSlotNumber">Number of Color Slots: </label>
+                            <input type="text" class="form-control relative" id="echoColorNumber" readonly>
+                        <div class="col-12 p-3 position-relative">
+                                <label class="form-label" data-i18n="echo.fighter.name">Enter New Fighter Name: </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="newEchoName" placeholder="New Fighter Name">                                                        
+                                </div> 
                         </div>
-                    </div>
-                </div>
-
-                <!-- Floating Action Button for Plugins -->
-                <div class="floating-actions animate__animated animate__fadeInUp">
-                    <div class="btn-group">
-                        <button class="btn btn-secondary" id="openPluginsFolderButton" title="Open Plugins Folder">
-                            <i class="bi bi-folder"></i>
-                        </button>
-                        <button class="btn btn-primary" id="installPlugin" title="Install Plugin">
-                            <i class="bi bi-plus-circle"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Social Tabs Content-->
-        <div class="tab-pane fade" id="social" role="tabpanel">
-            <div class="container-fluid p-3 overflow-auto h-100">
-                <div class="card h-100 overflow-auto"style="margin: 20px;">
-                    <!-- Social Main Info Container -->
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h4 class="mb-0">Social</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- Left Container: Profile, Posts, Friends List -->
-                                <div class="col-lg-8">
-                                    <div class="row g-3">
-                                        <!-- Profile Column -->
-                                        <div class="col-md-4">
-                                            <div class="card h-100">
-                                                <div class="card-header text-center">
-                                                    <h5 class="mb-0">Profile</h5>
-                                                </div>
-                                                <div class="card-body text-center">
-                                                    <img src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-circle mb-3" id="profilePicture" style="width:100px;height:100px;">
-                                                    <div class="mb-2"><strong>Username:</strong> <span id="profileUsername">Username</span></div>
-                                                    <div class="mb-2"><strong>Level:</strong> <span id="profileLevel">1</span></div>
-                                                    <div class="mb-2"><strong>Friend Count:</strong> <span id="profileFriendCount">0</span></div>
-                                                    <div class="mb-2"><strong>Main Character:</strong> <span id="profileMainChar">Mario</span></div>
-                                                    <div class="mb-2"><strong>Missions Completed:</strong> <span id="profileMissions">0</span></div>
-                                                    <div class="mb-2"><strong>Created:</strong> <span id="profileCreated">2025-01-01</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Posts Column -->
-                                        <div class="col-md-4">
-                                            <div class="card h-100">
-                                                <div class="card-header text-center">
-                                                    <h5 class="mb-0">Posts</h5>
-                                                </div>
-                                                <div class="card-body overflow-auto" style="max-height: 400px;">
-                                                    <ul class="list-group" id="postsList">
-                                                        <!-- Example post -->
-                                                        <li class="list-group-item">
-                                                            <strong>FriendUser</strong> downloaded <em>Cool Mod</em>
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>FriendUser</strong> liked <em>Awesome Mod</em>
-                                                        </li>
-                                                        <!-- Posts will be populated here -->
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Friends List Column -->
-                                        <div class="col-md-4">
-                                            <div class="card h-100">
-                                                <div class="card-header text-center">
-                                                    <h5 class="mb-0">Friends List</h5>
-                                                </div>
-                                                <div class="card-body overflow-auto" style="max-height: 400px;">
-                                                    <ul class="list-group" id="friendsList">
-                                                        <!-- Example friend -->
-                                                        <li class="list-group-item d-flex align-items-center">
-                                                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" style="width:40px;height:40px;">
-                                                            <div>
-                                                                <div><strong>FriendUser</strong></div>
-                                                                <div class="small">Level 5 • Main: Link</div>
-                                                            </div>
-                                                        </li>
-                                                        <!-- Friends will be populated here -->
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Right Container: Find a Friend -->
-                                <div class="col-lg-4">
-                                    <div class="card h-100">
-                                        <div class="card-header text-center">
-                                            <h5 class="mb-0">Find a Friend</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="mb-3">
-                                                <input type="text" class="form-control" id="friendSearchInput" placeholder="Search users...">
-                                            </div>
-                                            <ul class="list-group" id="findFriendResults">
-                                                <!-- Example search result -->
-                                                <li class="list-group-item d-flex align-items-center justify-content-between">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="https://via.placeholder.com/40" class="rounded-circle me-2" style="width:40px;height:40px;">
-                                                        <div>
-                                                            <div><strong>SearchUser</strong></div>
-                                                            <div class="small">Level 2 • Main: Samus</div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="btn btn-sm btn-primary">Send Friend Request</button>
-                                                </li>
-                                                <!-- Results will be populated here -->
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Level and Missions Stats Container -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="mb-0">Level and Missions</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row mt-2">
-                                <!-- Level Container -->
-                                <div class="col-md-3 mb-3">
-                                    <div class="card h-100 text-center">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">Level</h5>
-                                        </div>
-                                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                                            <span id="profileLevelLarge" style="font-size: 3rem; font-style: italic;">
-                                                <span id="profileLevelLargeValue">1</span>
-                                            </span>
-                                            <!-- EXP Progress Bar -->
-                                            <div class="w-100 mt-3">
-                                                <div class="d-flex justify-content-between mb-1">
-                                                    <small>EXP</small>
-                                                    <small>
-                                                        <span id="profileExpCurrent">120</span> /
-                                                        <span id="profileExpNext">200</span>
-                                                    </small>
-                                                </div>
-                                                <div class="progress" style="height: 18px;">
-                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                        style="width: 60%;" aria-valuenow="120" aria-valuemin="0" aria-valuemax="200"
-                                                        id="profileExpBar"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Missions Container -->
-                                <div class="col-md-5 mb-3">
-                                    <div class="card h-100">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">Missions</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div id="missionsList">
-                                                <!-- Example mission with progress bar and exp reward -->
-                                                <div class="mb-3">
-                                                    <div class="d-flex justify-content-between">
-                                                        <span><strong>Win 10 Matches</strong></span>
-                                                        <span class="text-muted"><span class="mission-progress-value">7</span>/10</span>
-                                                    </div>
-                                                    <div class="progress mb-1">
-                                                        <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="10"></div>
-                                                    </div>
-                                                    <div class="text-end text-success small">
-                                                        +50 EXP on completion
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <div class="d-flex justify-content-between">
-                                                        <span><strong>Download 5 Mods</strong></span>
-                                                        <span class="text-muted"><span class="mission-progress-value">5</span>/5</span>
-                                                    </div>
-                                                    <div class="progress mb-1">
-                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5"></div>
-                                                    </div>
-                                                    <div class="text-end text-success small">
-                                                        +30 EXP on completion
-                                                    </div>
-                                                </div>
-                                                <!-- More missions will be dynamically added here -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Friend Achievements Container -->
-                                <div class="col-md-4 mb-3">
-                                    <div class="card h-100">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">Friend Achievements</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <ul class="list-group" id="friendAchievementsList">
-                                                <!-- Example friend achievement -->
-                                                <li class="list-group-item">
-                                                    <strong>FriendUser</strong> completed <em>Win 10 Matches</em>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <strong>AnotherFriend</strong> completed <em>Download 5 Mods</em>
-                                                </li>
-                                                <!-- More friend achievements will be dynamically added here -->
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                </div>
-        <!-- Settings Tab -->
-        <div class="tab-pane fade" id="settings" role="tabpanel">
-            <div class="container-fluid p-4 h-100">
-                <div class="card h-100 animate__animated animate__fadeIn">
-                    <div class="card-header">
-                        <h5 class="mb-0">Settings</h5>
-                    </div>                     
-                    <div class="card-body overflow-auto" style="max-height: calc(100vh - 160px);">
-                        <!-- Settings Tabs Navigation -->
-                        <ul class="nav nav-pills mb-3" id="settingsTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="paths-tab" data-bs-toggle="pill" data-bs-target="#paths-content" type="button" role="tab">
-                                    <i class="bi bi-folder me-2"></i>Setup
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="appearance-tab" data-bs-toggle="pill" data-bs-target="#appearance-content" type="button" role="tab">
-                                    <i class="bi bi-palette me-2" ></i>Appearance
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="integration-tab" data-bs-toggle="pill" data-bs-target="#integration-content" type="button" role="tab">
-                                    <i class="bi bi-plug me-2" ></i>Features
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="emulator-tab" data-bs-toggle="pill" data-bs-target="#emulator-content" type="button" role="tab">
-                                    <i class="bi bi-controller me-2" ></i>Emulator
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="logs-tab" data-bs-toggle="pill" data-bs-target="#logs-content" type="button" role="tab">
-                                    <i class="bi bi-journal-text me-2"></i>Logs
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="feedback-tab" data-bs-toggle="pill" data-bs-target="#feedback-content" type="button" role="tab">
-                                    <i class="bi bi-chat-dots me-2"></i>Feedback
-                                </button>
-                            </li>
-                        </ul>
-                    
-                        <!-- Settings Tabs Content -->
-                        <div class="tab-content" id="settingsTabsContent">
-                            <!-- Paths Tab -->
-                            <div class="tab-pane fade show active" id="paths-content" role="tabpanel">
-                                <div class="mb-4">
-                                    <h6 class="mb-3" data-i18n="settings.paths.title">Directory Settings</h6>
-                                    <label class="form-label" data-i18n="settings.paths.modsDir">Mods Directory</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="modsPath" readonly>
-                                        <button class="btn btn-outline-primary" id="selectModsFolder">
-                                            <i class="bi bi-folder2-open"></i>
-                                        </button>
-                                    </div>
-                                    
-                                    <label class="form-label" data-i18n="settings.paths.pluginsDir">Plugins Directory</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="pluginsPath" readonly>
-                                        <button class="btn btn-outline-primary" id="selectPluginsFolder">
-                                            <i class="bi bi-folder2-open"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Appearance Tab -->
-                            <div class="tab-pane fade" id="appearance-content" role="tabpanel">
-                                <div class="mb-4">
-                                    <h6 class="mb-3" data-i18n="settings.theme.title">Theme Settings</h6>
-                                    <div class="form-check form-switch mb-3">
-                                        <input class="form-check-input" type="checkbox" id="darkModeToggle">
-                                        <label class="form-check-label" for="darkModeToggle" data-i18n="settings.theme.dark">Dark Mode</label>
-                                    </div>
-
-                                    <label class="form-label" data-i18n="settings.theme.css">Custom CSS File</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="customCssPath" readonly>
-                                        <button class="btn btn-outline-primary" id="selectCustomCssFile">
-                                            <i class="bi bi-folder2-open"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger" id="removeCustomCssFile">
-                                            <i class="bi bi-x-circle"></i>
-                                        </button>
-                                    </div>
-                                    <small class="textmuted" data-i18n="settings.theme.csstext">Select the custom CSS file for styling (Restart needed)</small>
-                                </div>
-
-                                <div class="mb-3">
-                                    <h6 class="mb-3">Language</h6>
-                                    <select class="form-select" id="languageSelect">
-                                        <option value="en">English</option>
-                                        <option value="es">Español</option>
-                                        <option value="fr">Français</option>
-                                        <option value="zh-TW">繁體中文</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Integration Tab -->
-                            <div class="tab-pane fade" id="integration-content" role="tabpanel">
-                                <div class="mb-4">
-                                    <h6 class="mb-3">Features</h6>
-                                    <div class="form-check form-switch mb-3">
-                                        <input class="form-check-input" type="checkbox" id="protocolConfirmToggle">
-                                        <label class="form-check-label" for="protocolConfirmToggle">Skip Protocol Confirmation</label>
-                                        <small class="form-text textmuted d-block">Skip the confirmation dialog when opening FightPlanner links</small>
-                                    </div>
-                                    <div class="form-check form-switch mb-3">
-                                        <input class="form-check-input" type="checkbox" id="conflictCheckToggle">
-                                        <label class="form-check-label" for="conflictCheckToggle">Enable Conflict Check (Takes longer to load mods)</label>
-                                    </div>
-                                    <div class="form-check form-switch mb-3">
-                                        <input class="form-check-input" type="checkbox" id="discordRpcToggle">
-                                        <label class="form-check-label" for="discordRpcToggle">Enable Discord RPC</label>
-                                    </div>
-                                    <div class="form-check form-switch mb-3">
-                                        <input class="form-check-input" type="checkbox" id="legacyModDiscoveryToggle">
-                                        <label class="form-check-label" for="legacyModDiscoveryToggle">Legacy mod discovery (faster)</label>
-                                        <small class="form-text textmuted d-block">Use dot-prefixed folders for disabled mods instead of a separate directory.</small>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="volumeControl" class="form-label">Finish Sound Volume</label>
-                                        <input type="range" class="form-range" id="volumeControl" min="0" max="100" step="1">
-                                        <small class="textmuted">Adjust the volume for finish download sound</small>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button class="btn btn-danger" id="clearTempFiles">
-                                            <i class="bi bi-trash me-2"></i>Clear Temporary Files
-                                        </button>
-                                        <small class="form-text textmuted d-block">Remove all temporary files to free up space</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Emulator Tab -->
-                            <div class="tab-pane fade" id="emulator-content" role="tabpanel">
-                                <div class="mb-4">
-                                    <h6 class="mb-3">Emulator Settings</h6>
-                                    
-                                    <!-- Emulator Selection -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Select Emulator</label>
-                                        <select class="form-select" id="emulatorSelect">
-                                            <option value="">Select an emulator...</option>
-                                            <option value="yuzu">yuzu (any fork of yuzu should work with no problem)</option>
-                                            <option value="ryujinx">Ryujinx</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Emulator Path -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Emulator Path</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="emulatorPath" readonly>
-                                            <button class="btn btn-outline-primary" id="selectEmulatorPath">
-                                                <i class="bi bi-folder2-open"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Game Path -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Game Path</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="gamePath" readonly>
-                                            <button class="btn btn-outline-primary" id="selectGamePath">
-                                                <i class="bi bi-folder2-open"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Yuzu Fullscreen Option -->
-                                    <div class="mb-3" id="yuzuOptions" style="display: none;">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="yuzuFullscreen">
-                                            <label class="form-check-label" for="yuzuFullscreen">
-                                                Launch in Fullscreen
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Feedback Tab -->
-                            <div class="tab-pane fade" id="feedback-content" role="tabpanel">
-                                <div class="mb-4">
-                                    <h6 class="mb-3">Suggestions & Support</h6>
-                                    <p>Got a suggestion for FightPlanner? Want a feature to be added? Let me know!</p>
-                                    <a href="https://forms.gle/ZoypQYxyMw57poXs8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                                        <i class="bi bi-send me-2"></i>Submit Feedback
-                                    </a>
-                                    
-                                    <hr class="my-4">
-                                    
-                                    <p>FightPlanner dev searching for people to test Early Access ! Go check it out</p>
-                                    <a href="https://forms.gle/TRkqw8g5hDaPXoc59" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                                        <i class="bi bi-send me-2"></i>Apply for Early Access
-                                    </a>
-
-                                    <hr class="my-4">
-
-                                    <p>FightPlanner got an official discord server ! Come join it !</p>
-                                    <a href="https://discord.gg/2zT5Rg46bG" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                                        <i class="bi bi-discord me-2"></i>Join the official discord server !
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Add this new tab content -->
-                            <div class="tab-pane fade" id="logs-content" role="tabpanel">
-                                <div class="mb-4">
-                                    <h6 class="mb-3">Application Logs</h6>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <button class="btn btn-primary" id="openCurrentLog">
-                                            <i class="bi bi-file-text me-2"></i>Open Current Log
-                                        </button>
-                                        <button class="btn btn-outline-secondary" id="openLogsFolder">
-                                            <i class="bi bi-folder me-2"></i>Open Logs Folder
-                                        </button>
-                                    </div>
-                                    <div class="log-preview card">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
-                                            <span>Console Output</span>
-                                            <div>
-                                                <button class="btn btn-sm btn-outline-secondary" id="clearLogs">
-                                                    <i class="bi bi-trash"></i> Clear
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-primary" id="refreshLogs">
-                                                    <i class="bi bi-arrow-clockwise"></i> Refresh
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="card-body p-2">
-                                            <pre id="logContent" class="log-content" style="max-height: 400px; overflow-y: auto;">Loading logs...</pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Replace the characters tab content -->
-        <div class="tab-pane fade" id="characters" role="tabpanel">
-            <div class="container-fluid p-3">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card animate__animated animate__fadeIn">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Character Usage</h5>
-                                <button class="btn btn-sm btn-outline-primary" id="refreshCharacters">
-                                    <i class="bi bi-arrow-clockwise me-2"></i>Refresh
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <div id="characterSlotsList" class="character-slots-list">
-                                    <!-- Content will be populated by CharacterScanner -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Echo Fighter Tab -->
-        <div class="tab-pane fade h-100" id="echoFighter" role="tabpanel">
-            <div class="container-fluid h-100 overflow-auto">
-                <div class="row h-100">
-                    <!-- Echo Mod Selection -->
-                    <div class="col-12 p-3 position-relative">
-                        <label class="form-label" data-i18n="echo.mod.select">Select Echo Mod</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="echoModPath" readonly>
-                            <button class="btn btn-outline-primary" id="selectEchoModFolder">
-                                <i class="bi bi-folder2-open"></i>
-                            </button>                            
-                        </div> 
-                    </div>                    
-                    <div class="card flex-grow-1 mb-3">
-                        <div class="card-header flex-grow-1 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Echo Mod Details</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mod-preview mb-3">
-                                <img id="echoModImage" src="" alt="No image" class="img-fluid rounded" style="max-height: 300px; max-width: 300px;">
-                            </div>
-                            <div class="mod-metadata overflow-auto" id="echoModMetadata" style="max-height: 340px;">
-                                <div class="echo-metadata-content">
-                                    Select a mod to view details
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 p-3 position-relative" id="numColorSlots" name="color-start-dropdown">
-                        <label for="echoSlotNumber">Number of Color Slots: </label>
-                        <input type="text" class="form-control relative" id="echoColorNumber" readonly>
-                    <div class="col-12 p-3 position-relative">
-                            <label class="form-label" data-i18n="echo.fighter.name">Enter New Fighter Name: </label>
+                        <div class="col-12 p-3 position-relative">
+                            <label class="form-label" data-i18n="echo.fighter.id">Enter New Fighter ID: </label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="newEchoName" placeholder="New Fighter Name">                                                        
+                                <input type="text" class="form-control" id="newEchoID" placeholder="New Fighter ID">                                                        
                             </div> 
-                    </div>
-                    <div class="col-12 p-3 position-relative">
-                        <label class="form-label" data-i18n="echo.fighter.id">Enter New Fighter ID: </label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="newEchoID" placeholder="New Fighter ID">                                                        
-                        </div> 
-                    </div>
-                    <br>
-                    <div class="color-slots selection drop-down" id="colorStartSelect">
-                        <label for="colorStart">Choose Echo Slot Start: </label>
-                        <select name="colorStart" id="echoColorStart">
-                            <option value="08">08</option>
-                            <option value="16">16</option>
-                            <option value="24">24</option>
-                            <option value="32">32</option>
-                            <option value="40">40</option>
-                            <option value="48">48</option>
-                            <option value="56">56</option>
-                            <option value="64">64</option>
-                            <option value="72">72</option>
-                            <option value="80">80</option>
-                            <option value="88">88</option>
-                            <option value="96">96</option>
-                        </select>
-                        <br><br>
-                        <label for="baseSlot">Choose Echo Base Slot: </label>
-                        <select name="baseSlot" id="baseEchoSlot">
-                            <option value="00">00</option>
-                            <option value="01">01</option>
-                            <option value="02">02</option>
-                            <option value="03">03</option>
-                            <option value="04">04</option>
-                            <option value="05">05</option>
-                            <option value="06">06</option>
-                            <option value="07">07</option>
-                        </select>
-                        <br><br>
-                        <div class="btn-echo" id="createEcho">
-                            <button type="submit" class="btn btn-primary" id="createEcho">Create Echo Fighter
-                                <i class="bi bi-person-add"></i>
-                            </button>
-                        <br><br><br>
+                        </div>
+                        <br>
+                        <div class="color-slots selection drop-down" id="colorStartSelect">
+                            <label for="colorStart">Choose Echo Slot Start: </label>
+                            <select name="colorStart" id="echoColorStart">
+                                <option value="08">08</option>
+                                <option value="16">16</option>
+                                <option value="24">24</option>
+                                <option value="32">32</option>
+                                <option value="40">40</option>
+                                <option value="48">48</option>
+                                <option value="56">56</option>
+                                <option value="64">64</option>
+                                <option value="72">72</option>
+                                <option value="80">80</option>
+                                <option value="88">88</option>
+                                <option value="96">96</option>
+                            </select>
+                            <br><br>
+                            <label for="baseSlot">Choose Echo Base Slot: </label>
+                            <select name="baseSlot" id="baseEchoSlot">
+                                <option value="00">00</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                            </select>
+                            <br><br>
+                            <div class="btn-echo" id="createEcho">
+                                <button type="submit" class="btn btn-primary" id="createEcho">Create Echo Fighter
+                                    <i class="bi bi-person-add"></i>
+                                </button>
+                            <br><br><br>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -792,6 +587,93 @@
         </div>
     </div>
 </div>
+
+        <!-- Floating Social Sidebar Button -->
+        <!-- Social Sidebar -->
+        <div id="socialSidebar" class="social-sidebar border-end position-fixed h-100" style="top: 0; right: -400px; width: 400px; z-index: 1060; transition: right 0.3s;">
+            <!-- Social Sidebar Tabs -->
+            <ul class="nav nav-tabs nav-justified" id="socialSidebarTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-pane" type="button" role="tab">
+                        <i class="bi bi-person-circle"></i> Profile
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-pane" type="button" role="tab">
+                        <i class="bi bi-chat-left-text"></i> Posts
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="friends-tab" data-bs-toggle="tab" data-bs-target="#friends-pane" type="button" role="tab">
+                        <i class="bi bi-people"></i> Friends
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="find-friend-tab" data-bs-toggle="tab" data-bs-target="#find-friend-pane" type="button" role="tab">
+                        <i class="bi bi-person-plus"></i> Find a Friend
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content p-3 overflow-auto" style="height: calc(100% - 110px);">
+                <!-- Profile Tab -->
+                <div class="tab-pane fade show active" id="profile-pane" role="tabpanel">
+                    <div class="text-center">
+                        <img src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-circle mb-3" id="profilePicture" style="width:100px;height:100px;">
+                        <div class="mb-2"><strong>Username:</strong> <span id="profileUsername">Username</span></div>
+                        <div class="mb-2"><strong>Level:</strong> <span id="profileLevel">1</span></div>
+                        <div class="mb-2"><strong>Friend Count:</strong> <span id="profileFriendCount">0</span></div>
+                        <div class="mb-2"><strong>Main Character:</strong> <span id="profileMainChar">Mario</span></div>
+                        <div class="mb-2"><strong>Missions Completed:</strong> <span id="profileMissions">0</span></div>
+                        <div class="mb-2"><strong>Created:</strong> <span id="profileCreated">2025-01-01</span></div>
+                    </div>
+                </div>
+                <!-- Posts Tab -->
+                <div class="tab-pane fade" id="posts-pane" role="tabpanel">
+                    <ul class="list-group" id="postsList">
+                        <li class="list-group-item">
+                            <strong>FriendUser</strong> downloaded <em>Cool Mod</em>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>FriendUser</strong> liked <em>Awesome Mod</em>
+                        </li>
+                        <!-- Posts will be populated here -->
+                    </ul>
+                </div>
+                <!-- Friends List Tab -->
+                <div class="tab-pane fade" id="friends-pane" role="tabpanel">
+                    <ul class="list-group" id="friendsList">
+                        <li class="list-group-item d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" style="width:40px;height:40px;">
+                            <div>
+                                <div><strong>FriendUser</strong></div>
+                                <div class="small">Level 5 • Main: Link</div>
+                            </div>
+                        </li>
+                        <!-- Friends will be populated here -->
+                    </ul>
+                </div>
+                <!-- Find a Friend Tab -->
+                <div class="tab-pane fade" id="find-friend-pane" role="tabpanel">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="friendSearchInput" placeholder="Search users...">
+                    </div>
+                    <ul class="list-group" id="findFriendResults">
+                        <li class="list-group-item d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/40" class="rounded-circle me-2" style="width:40px;height:40px;">
+                                <div>
+                                    <div><strong>SearchUser</strong></div>
+                                    <div class="small">Level 2 • Main: Samus</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Send Friend Request</button>
+                        </li>
+                        <!-- Results will be populated here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     <!-- Context Menu -->
     <div class="dropdown-menu" id="contextMenu">
         <a class="dropdown-item" href="#" id="toggleMod">
@@ -905,6 +787,34 @@
                 }
             });
         });
+    </script>
+    <!-- Social Sidebar Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('socialSidebar');
+        const openBtn = document.getElementById('openSocialSidebarBtn');
+        const closeBtn = document.getElementById('closeSocialSidebarBtn');
+
+        function openSidebar() {
+            sidebar.style.right = '0';
+            openBtn.classList.add('open');
+        }
+        function closeSidebar() {
+            sidebar.style.right = '-400px';
+            openBtn.classList.remove('open');
+        }
+
+        openBtn.addEventListener('click', () => {
+            if (sidebar.style.right === '0px') {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeSidebar);
+        }
+    });
     </script>
 
     <!-- Credits Modal -->

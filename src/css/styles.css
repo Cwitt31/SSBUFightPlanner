@@ -1530,6 +1530,119 @@ input.form-control.form-control-sm::placeholder  {
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
+/* Social Sidebar Button */
+
+.social-sidebar-btn {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    z-index: 1100;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: var(--bs-primary, #0d6efd);
+    color: var(--bs-light, #fff);
+    font-size: 2.2rem;
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: right 0.3s, background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+.social-sidebar-btn:hover,
+.social-sidebar-btn:focus {
+    background: var(--bs-primary-dark, #0056b3);
+    color: var(--bs-light, #fff);
+}
+.social-sidebar-btn.open {
+    right: 400px; /* Move with sidebar width */
+}
+
+@media (max-width: 500px) {
+    .social-sidebar-btn {
+        right: -8px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+    }
+    .social-sidebar-btn.open {
+        right: 100vw;
+    }
+}
+
+/* Dark mode adjustments */
+body.dark-mode .social-sidebar-btn {
+    background: var(--bs-primary, #0d6efd);
+    color: var(--bs-light, #fff);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+body.dark-mode .social-sidebar-btn:hover,
+body.dark-mode .social-sidebar-btn:focus {
+    background: var(--bs-primary-dark, #0056b3);
+    color: var(--bs-light, #fff);
+}
+
+.social-sidebar {
+    background: #808080 !important; /* Softer light gray background */
+    color: #0d6efd;      /* Blue text */
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    min-width: 320px;
+    max-width: 100vw;
+    border-left: 1px solid #dee2e6;
+    transition: background 0.2s, color 0.2s;
+}
+.social-sidebar,
+.social-sidebar a,
+.social-sidebar .nav-link,
+.social-sidebar .list-group-item,
+.social-sidebar label,
+.social-sidebar h5,
+.social-sidebar h6,
+.social-sidebar span,
+.social-sidebar div,
+.social-sidebar p {
+    color: #0d6efd !important;
+}
+@media (max-width: 500px) {
+    .social-sidebar {
+        width: 100vw !important;
+        right: -100vw !important;
+    }
+}
+
+/* Dark mode adjustments */
+body.dark-mode .social-sidebar {
+    background: #181a1b !important; /* Very dark background */
+    color: #0d6efd !important;      /* Bootstrap blue text */
+    border-left: 1px solid #222;
+    box-shadow: -2px 0 16px rgba(0,0,0,0.35);
+}
+
+/* Make most sidebar content blue in dark mode */
+body.dark-mode .social-sidebar,
+body.dark-mode .social-sidebar a,
+body.dark-mode .social-sidebar .nav-link,
+body.dark-mode .social-sidebar .list-group-item,
+body.dark-mode .social-sidebar label,
+body.dark-mode .social-sidebar h5,
+body.dark-mode .social-sidebar h6,
+body.dark-mode .social-sidebar span,
+body.dark-mode .social-sidebar div,
+body.dark-mode .social-sidebar p {
+    color: #0d6efd !important;
+}
+
+/* End Social Sidebar */
+
 /* Dark mode adjustments */
 body.dark-mode #editModInfoModal .modal-content {
     background-color: var(#2c2c2c);
