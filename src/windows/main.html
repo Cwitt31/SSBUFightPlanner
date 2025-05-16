@@ -66,6 +66,12 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="social-tab" data-bs-toggle="pill" 
+                    data-bs-target="#social" type="button" role="tab">
+                <i class="bi bi-people-fill me-2"></i><span>Social</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
             <button class="nav-link" id="settings-tab" data-bs-toggle="pill" 
                     data-bs-target="#settings" type="button" role="tab">
                 <i class="bi bi-gear me-2"></i><span data-i18n="nav.settings">Settings</span>
@@ -231,6 +237,104 @@
                 </div>
             </div>
         </div>
+
+        <!--Social Tabs Content-->
+        <div class="tab-pane fade" id="social" role="tabpanel">
+            <div class="container-fluid p-3">
+                <div class="row">
+                    <!-- Left Container: Profile, Posts, Friends List -->
+                    <div class="col-lg-8">
+                        <div class="row g-3">
+                            <!-- Profile Column -->
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card-header text-center">
+                                        <h5 class="mb-0">Profile</h5>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <img src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-circle mb-3" id="profilePicture" style="width:100px;height:100px;">
+                                        <div class="mb-2"><strong>Username:</strong> <span id="profileUsername">Username</span></div>
+                                        <div class="mb-2"><strong>Level:</strong> <span id="profileLevel">1</span></div>
+                                        <div class="mb-2"><strong>Friend Count:</strong> <span id="profileFriendCount">0</span></div>
+                                        <div class="mb-2"><strong>Main Character:</strong> <span id="profileMainChar">Mario</span></div>
+                                        <div class="mb-2"><strong>Missions Completed:</strong> <span id="profileMissions">0</span></div>
+                                        <div class="mb-2"><strong>Created:</strong> <span id="profileCreated">2025-01-01</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Posts Column -->
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card-header text-center">
+                                        <h5 class="mb-0">Posts</h5>
+                                    </div>
+                                    <div class="card-body overflow-auto" style="max-height: 400px;">
+                                        <ul class="list-group" id="postsList">
+                                            <!-- Example post -->
+                                            <li class="list-group-item">
+                                                <strong>FriendUser</strong> downloaded <em>Cool Mod</em>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <strong>FriendUser</strong> liked <em>Awesome Mod</em>
+                                            </li>
+                                            <!-- Posts will be populated here -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Friends List Column -->
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card-header text-center">
+                                        <h5 class="mb-0">Friends List</h5>
+                                    </div>
+                                    <div class="card-body overflow-auto" style="max-height: 400px;">
+                                        <ul class="list-group" id="friendsList">
+                                            <!-- Example friend -->
+                                            <li class="list-group-item d-flex align-items-center">
+                                                <img src="https://via.placeholder.com/40" class="rounded-circle me-2" style="width:40px;height:40px;">
+                                                <div>
+                                                    <div><strong>FriendUser</strong></div>
+                                                    <div class="small">Level 5 • Main: Link</div>
+                                                </div>
+                                            </li>
+                                            <!-- Friends will be populated here -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Container: Find a Friend -->
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-header text-center">
+                                <h5 class="mb-0">Find a Friend</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="friendSearchInput" placeholder="Search users...">
+                                </div>
+                                <ul class="list-group" id="findFriendResults">
+                                    <!-- Example search result -->
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" style="width:40px;height:40px;">
+                                            <div>
+                                                <div><strong>SearchUser</strong></div>
+                                                <div class="small">Level 2 • Main: Samus</div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary">Send Friend Request</button>
+                                    </li>
+                                    <!-- Results will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Settings Tab -->
         <div class="tab-pane fade" id="settings" role="tabpanel">
             <div class="container-fluid p-4 h-100">
@@ -272,7 +376,7 @@
                                 </button>
                             </li>
                         </ul>
-
+                    
                         <!-- Settings Tabs Content -->
                         <div class="tab-content" id="settingsTabsContent">
                             <!-- Paths Tab -->
