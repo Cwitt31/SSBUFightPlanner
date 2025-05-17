@@ -1535,8 +1535,6 @@ input.form-control.form-control-sm::placeholder  {
 }
 
 /* Social Sidebar Button */
-
-/* ...existing code... */
 .social-sidebar-btn {
     position: fixed;
     top: 50%;
@@ -1567,7 +1565,7 @@ input.form-control.form-control-sm::placeholder  {
 }
 
 #socialSignOutSidebarBtn {
-    top: 425px; /* just below the open button, adjust as needed */
+    top: 435px; /* just below the open button, adjust as needed */
     background-color: red;
 }
 
@@ -1581,8 +1579,7 @@ input.form-control.form-control-sm::placeholder  {
     transform: translateY(-50%) scale(1);
     z-index: 1070;
 }
-.social-sidebar-btn.closed:hover,
-.social-sidebar-btn.closed:focus {
+.social-sidebar-btn.closed:hover {
     background: var(--bs-primary-dark, #0056b3);
     color: var(--bs-light, #fff);
     transform: translateY(-50%) scale(1.25);
@@ -1628,10 +1625,6 @@ input.form-control.form-control-sm::placeholder  {
         right: 100vw;
         transform: translateY(-50%) scale(1.25);
     }
-}
-
-.social-sidebar {
-    z-index: 1060;
 }
 
 /* Sidebar tab swipe animation */
@@ -1683,8 +1676,7 @@ body.dark-mode .social-sidebar-btn {
     color: var(--bs-light, #fff);
     box-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
-body.dark-mode .social-sidebar-btn:hover,
-body.dark-mode .social-sidebar-btn:focus {
+body.dark-mode .social-sidebar-btn:hover {
     background: var(--bs-primary-dark, #0056b3);
     color: var(--bs-light, #fff);
 }
@@ -1697,6 +1689,7 @@ body.dark-mode .social-sidebar-btn:focus {
     max-width: 100vw;
     border-left: 1px solid #dee2e6;
     transition: background 0.2s, color 0.2s;
+    z-index: 1060;
 }
 .social-sidebar,
 .social-sidebar a,
