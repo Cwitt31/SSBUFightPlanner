@@ -85,7 +85,10 @@
         </ul>
         <button id="openSocialSidebarBtn" class="btn btn-primary social-sidebar-btn">
             <i class="bi bi-people-fill"></i>
-        </button>    
+        </button>
+        <button id="socialSignOutSidebarBtn" class="btn social-sidebar-btn btn-danger mt-2" style="display: none;">
+            <i class="bi bi-box-arrow-right"></i>
+        </button>   
         <!-- Tab Contents -->
         <div class="tab-content h-100" id="mainTabContent">
             <!-- Mods Tab -->
@@ -588,9 +591,64 @@
     </div>
 </div>
 
-        <!-- Floating Social Sidebar Button -->
         <!-- Social Sidebar -->
+        <!-- Main Social Sidebar -->
         <div id="socialSidebar" class="social-sidebar border-end position-fixed h-100" style="top: 0; right: -400px; width: 400px; z-index: 1060; transition: right 0.3s;">
+            <!-- Social Sidebar Auth Pages -->
+            <div id="socialAuthContainer" class="p-4" style="height: 100%; overflow-y: auto;">
+                <!-- Login Page -->
+                <div id="socialLoginPage">
+                    <div class="text-center mb-4">
+                        <img src="https://github.com/FIREXDF/SSBUFightPlanner/blob/main/icon.png?raw=true" alt="FightPlanner Logo" style="height: 60px;">
+                        <h3 class="mt-2 mb-3">FightPlanner Social</h3>
+                    </div>
+                    <form id="socialLoginForm" autocomplete="off">
+                        <div class="mb-3">
+                            <label for="socialLoginUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="socialLoginUsername" required autocomplete="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="socialLoginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="socialLoginPassword" required autocomplete="current-password">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="socialStaySignedIn">
+                            <label class="form-check-label" for="socialStaySignedIn">Stay signed in</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mb-2">Login</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" id="socialShowSignup" class="small">Sign up</a>
+                            <a href="#" id="socialShowForgot" class="small">Forgot password?</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- Signup Page -->
+                <div id="socialSignupPage" style="display:none;">
+                    <div class="text-center mb-4">
+                        <img src="https://github.com/FIREXDF/SSBUFightPlanner/blob/main/icon.png?raw=true" alt="FightPlanner Logo" style="height: 60px;">
+                        <h3 class="mt-2 mb-3">Sign Up</h3>
+                    </div>
+                    <form id="socialSignupForm" autocomplete="off">
+                        <div class="mb-3">
+                            <label for="signupUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="signupUsername" required autocomplete="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" required autocomplete="new-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="signupConfirmPassword" required autocomplete="new-password">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mb-2">Sign Up</button>
+                        <div class="text-center">
+                            <a href="#" id="socialReturnToLogin1" class="small">Return to login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Social Sidebar Auth Pages -->
             <!-- Social Sidebar Tabs -->
             <ul class="nav nav-tabs nav-justified" id="socialSidebarTabs" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -674,6 +732,41 @@
                         </li>
                         <!-- Results will be populated here -->
                     </ul>
+                </div>
+            </div>
+            <!-- Forgot Password Modal -->
+            <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true" data-bs-backdrop="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Contact FightPlanner admin on discord for password help.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--Sign Out Confirmation Modal-->
+            <div class="modal fade" id="signOutConfirmModal" tabindex="-1" aria-labelledby="signOutConfirmModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signOutConfirmModalLabel">Sign Out</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to sign out?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmSignOutBtn">Sign Out</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -795,23 +888,131 @@
     <!-- Social Sidebar Script -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+    // Auth page switching
+    const loginPage = document.getElementById('socialLoginPage');
+    const signupPage = document.getElementById('socialSignupPage');
+    const signOutBtn = document.getElementById('socialSignOutSidebarBtn');
+    const sidebarContent = document.querySelector('.tab-content.p-3.overflow-auto');
+    const authContainer = document.getElementById('socialAuthContainer');
+
+    function showPage(page) {
+        loginPage.style.display = page === 'login' ? '' : 'none';
+        signupPage.style.display = page === 'signup' ? '' : 'none';
+    }
+
+    document.getElementById('socialShowSignup').onclick = (e) => { e.preventDefault(); showPage('signup'); };
+    document.getElementById('socialReturnToLogin1').onclick = (e) => { e.preventDefault(); showPage('login'); };
+
+    // Forgot password alert
+    document.getElementById('socialShowForgot').onclick = (e) => {
+        e.preventDefault();
+        const forgotModal = new bootstrap.Modal(document.getElementById('forgotPasswordModal'));
+        forgotModal.show();
+    };
+
+    // Show/hide sign out button based on login state
+    function updateSignOutBtn() {
+        // Show only if sidebar content is visible (signed in)
+        if (sidebarContent.style.display !== 'none') {
+            signOutBtn.style.display = '';
+        } else {
+            signOutBtn.style.display = 'none';
+        }
+    }
+
+    // Show confirmation modal on click
+    signOutBtn.addEventListener('click', () => {
+        const modal = new bootstrap.Modal(document.getElementById('signOutConfirmModal'));
+        modal.show();
+    });
+
+    // Handle actual sign out
+    document.getElementById('confirmSignOutBtn').addEventListener('click', () => {
+        // Hide sidebar content, show auth
+        authContainer.style.display = '';
+        sidebarContent.style.display = 'none';
+        sidebarContent.style.opacity = 0;
+        document.getElementById('socialLoginForm').reset();
+        // Hide modal
+        bootstrap.Modal.getInstance(document.getElementById('signOutConfirmModal')).hide();
+        updateSignOutBtn();
+    });
+
+    const storedCreds = JSON.parse(localStorage.getItem('socialCreds') || '{}');
+    if (storedCreds.username && storedCreds.password) {
+        // Auto-fill and auto-login
+        document.getElementById('socialLoginUsername').value = storedCreds.username;
+        document.getElementById('socialLoginPassword').value = storedCreds.password;
+        document.getElementById('socialStaySignedIn').checked = true;
+        // Optionally, auto-submit the form:
+        // document.getElementById('socialLoginForm').dispatchEvent(new Event('submit'));
+    }
+
+    // On login, store credentials if "Stay signed in" is checked
+    document.getElementById('socialLoginForm').onsubmit = (e) => {
+        e.preventDefault();
+        const username = document.getElementById('socialLoginUsername').value;
+        const password = document.getElementById('socialLoginPassword').value;
+        const staySignedIn = document.getElementById('socialStaySignedIn').checked;
+
+        if (staySignedIn) {
+            localStorage.setItem('socialCreds', JSON.stringify({ username, password }));
+        } else {
+            localStorage.removeItem('socialCreds');
+        }
+
+        // ...existing login logic...
+        authContainer.style.display = 'none';
+        sidebarContent.style.opacity = 0;
+        sidebarContent.style.display = '';
+        sidebarContent.style.transition = 'opacity 0.5s';
+        setTimeout(() => {
+            sidebarContent.style.opacity = 1;
+            updateSignOutBtn();
+        }, 10);
+    };
+
+    // On sign out, clear stored credentials
+    document.getElementById('confirmSignOutBtn').addEventListener('click', () => {
+        localStorage.removeItem('socialCreds');
+        // ...existing sign out logic...
+        authContainer.style.display = '';
+        sidebarContent.style.display = 'none';
+        sidebarContent.style.opacity = 0;
+        document.getElementById('socialLoginForm').reset();
+        bootstrap.Modal.getInstance(document.getElementById('signOutConfirmModal')).hide();
+        updateSignOutBtn();
+    });
+
+    // ...rest of your code...
+});
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('socialSidebar');
     const openBtn = document.getElementById('openSocialSidebarBtn');
+    const signOutBtn = document.getElementById('socialSignOutSidebarBtn');
     const closeBtn = document.getElementById('closeSocialSidebarBtn');
+    const sidebarBtns = document.querySelectorAll('.social-sidebar-btn');
 
     function openSidebar() {
         sidebar.style.right = '0';
         openBtn.classList.add('open');
         openBtn.classList.remove('closed');
+        signOutBtn.classList.add('open');
+        signOutBtn.classList.remove('closed');
     }
     function closeSidebar() {
         sidebar.style.right = '-400px';
         openBtn.classList.remove('open');
         openBtn.classList.add('closed');
+        signOutBtn.classList.remove('open');
+        signOutBtn.classList.add('closed');
     }
 
     // Initialize as closed
     openBtn.classList.add('closed');
+    signOutBtn.classList.add('closed');
 
     openBtn.addEventListener('click', () => {
         if (sidebar.style.right === '0px') {
@@ -823,6 +1024,14 @@
     if (closeBtn) {
         closeBtn.addEventListener('click', closeSidebar);
     }
+    document.body.addEventListener('show.bs.modal', () => {
+        sidebarBtns.forEach(btn => btn.classList.add('hide-when-modal'));
+    });
+
+    // Listen for any modal close
+    document.body.addEventListener('hidden.bs.modal', () => {
+        sidebarBtns.forEach(btn => btn.classList.remove('hide-when-modal'));
+    });
 });
     </script>
 

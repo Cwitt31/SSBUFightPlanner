@@ -3662,6 +3662,61 @@ document.getElementById('createEcho').addEventListener('click', async () => {
     }
 });
 
+// Social Sidebar Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const tabList = document.getElementById('socialSidebarTabs');
+    const tabButtons = tabList.querySelectorAll('[data-bs-toggle="tab"]');
+    const tabIds = Array.from(tabButtons).map(btn => btn.getAttribute('data-bs-target'));
+    let lastTabIndex = 0;
+
+    tabButtons.forEach((btn, idx) => {
+        btn.addEventListener('show.bs.tab', function (e) {
+            const newTabIndex = idx;
+            const oldTabIndex = lastTabIndex;
+            lastTabIndex = newTabIndex;
+
+            const direction = newTabIndex > oldTabIndex ? 'right' : 'left';
+
+            // Remove all swipe classes from all panes
+            tabIds.forEach(id => {
+                const pane = document.querySelector(id);
+                if (pane) {
+                    pane.classList.remove('swipe-in-right', 'swipe-in-left', 'swipe-out-right', 'swipe-out-left');
+                    pane.style.position = '';
+                    pane.style.zIndex = '';
+                }
+            });
+
+            // Animate outgoing pane
+            const oldPane = document.querySelector(tabIds[oldTabIndex]);
+            if (oldPane && oldPane.classList.contains('active')) {
+                oldPane.classList.add(direction === 'right' ? 'swipe-out-left' : 'swipe-out-right');
+                // Remove the class after animation completes
+                setTimeout(() => {
+                    oldPane.classList.remove('swipe-out-left', 'swipe-out-right');
+                }, 400);
+            }
+
+            // Animate incoming pane
+            const newPane = document.querySelector(tabIds[newTabIndex]);
+            if (newPane) {
+                newPane.classList.add(direction === 'right' ? 'swipe-in-right' : 'swipe-in-left');
+                setTimeout(() => {
+                    newPane.classList.remove('swipe-in-right', 'swipe-in-left');
+                }, 400);
+            }
+        });
+    });
+    document.getElementById('socialSignOutBtn').onclick = () => {
+        // "Sign out" simply returns to the login page and resets sidebar state
+        document.getElementById('socialAuthContainer').style.display = '';
+        document.querySelector('.tab-content.p-3.overflow-auto').style.display = 'none';
+        document.querySelector('.tab-content.p-3.overflow-auto').style.opacity = 0;
+        // Optionally clear any "stay signed in" state here if you store it
+        document.getElementById('socialLoginForm').reset();
+    };
+    
+});
 
 
 

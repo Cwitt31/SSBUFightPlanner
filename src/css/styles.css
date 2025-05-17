@@ -14,6 +14,10 @@
     visibility: hidden;
 }
 
+.modal.fade {
+    z-index: 5001  !important;
+}
+
 .loading-overlay.minimized {
     opacity: 0;
     pointer-events: none;
@@ -1534,11 +1538,11 @@ input.form-control.form-control-sm::placeholder  {
 
 /* ...existing code... */
 .social-sidebar-btn {
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: 0px;
     transform: translateY(-50%) scale(1);
-    z-index: 1100;
+    z-index: 1070;
     width: 44px;
     height: 44px;
     padding: 0;
@@ -1558,19 +1562,56 @@ input.form-control.form-control-sm::placeholder  {
     cursor: pointer;
 }
 
+.social-sidebar-btn.hide-when-modal {
+    display: none !important;
+}
+
+#socialSignOutSidebarBtn {
+    top: 425px; /* just below the open button, adjust as needed */
+    background-color: red;
+}
+
 .social-sidebar-btn.open {
     right: 400px;
     transform: translateY(-50%) scale(1.25);
+    z-index: 1070;
 }
 
 .social-sidebar-btn.closed {
     transform: translateY(-50%) scale(1);
+    z-index: 1070;
 }
 .social-sidebar-btn.closed:hover,
 .social-sidebar-btn.closed:focus {
     background: var(--bs-primary-dark, #0056b3);
     color: var(--bs-light, #fff);
     transform: translateY(-50%) scale(1.25);
+}
+
+/* Make social sidebar nav-tabs fill height and buttons stretch */
+#socialSidebarTabs {
+    height: 50px;
+    min-height: 80px; /* fallback for small content */
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+#socialSidebarTabs .nav-item {
+    flex: 1 1 0;
+    display: flex;
+}
+
+#socialSidebarTabs .nav-link {
+    height: 100%;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    margin-bottom: 0;
+    border-bottom: none;
 }
 
 /* Responsive: smaller button on mobile */
@@ -1588,7 +1629,53 @@ input.form-control.form-control-sm::placeholder  {
         transform: translateY(-50%) scale(1.25);
     }
 }
-/* ...existing code... */
+
+.social-sidebar {
+    z-index: 1060;
+}
+
+/* Sidebar tab swipe animation */
+.tab-pane.swipe-in-right {
+    animation: sidebarSwipeInRight 0.4s both cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tab-pane.swipe-in-left {
+    animation: sidebarSwipeInLeft 0.4s both cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tab-pane.swipe-out-right {
+    animation: sidebarSwipeOutRight 0.4s both cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.tab-pane.swipe-out-left {
+    animation: sidebarSwipeOutLeft 0.4s both cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+@keyframes sidebarSwipeInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes sidebarSwipeInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes sidebarSwipeOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(100%); opacity: 0; }
+}
+@keyframes sidebarSwipeOutLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(-100%); opacity: 0; }
+}
+/*end sidebar swipe animation */
+/* end Social Sidebar Button */
 
 /* Dark mode adjustments */
 body.dark-mode .social-sidebar-btn {
