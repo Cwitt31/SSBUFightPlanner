@@ -358,6 +358,10 @@
                                             <label class="form-check-label" for="legacyModDiscoveryToggle">Legacy mod discovery (faster)</label>
                                             <small class="form-text textmuted d-block">Use dot-prefixed folders for disabled mods instead of a separate directory.</small>
                                         </div>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="socialSidebarToggle">
+                                            <label class="form-check-label" for="socialSidebarToggle">Enable Social Sidebar</label>
+                                        </div>
                                         <div class="mb-3">
                                             <label for="volumeControl" class="form-label">Finish Sound Volume</label>
                                             <input type="range" class="form-range" id="volumeControl" min="0" max="100" step="1">
@@ -909,13 +913,18 @@
 
     // Show/hide sign out button based on login state
     function updateSignOutBtn() {
-        // Show only if sidebar content is visible (signed in)
-        if (sidebarContent.style.display !== 'none') {
-            signOutBtn.style.display = '';
-        } else {
-            signOutBtn.style.display = 'none';
-        }
+    // Sidebar is open if right is '0px'
+    const sidebarOpen = sidebar.style.right === '0px';
+    // Signed in if sidebarContent is visible (not display: none)
+    const signedIn = sidebarContent && sidebarContent.style.display !== 'none';
+    // Auth container is visible if not display: none
+    const authVisible = authContainer && authContainer.style.display !== 'none';
+    if (sidebarOpen && signedIn && !authVisible) {
+        signOutBtn.style.display = '';
+    } else {
+        signOutBtn.style.display = 'none';
     }
+}
 
     // Show confirmation modal on click
     signOutBtn.addEventListener('click', () => {
@@ -981,35 +990,30 @@
         updateSignOutBtn();
     });
 
-    // ...rest of your code...
-});
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('socialSidebar');
     const openBtn = document.getElementById('openSocialSidebarBtn');
-    const signOutBtn = document.getElementById('socialSignOutSidebarBtn');
     const closeBtn = document.getElementById('closeSocialSidebarBtn');
     const sidebarBtns = document.querySelectorAll('.social-sidebar-btn');
 
     function openSidebar() {
-        sidebar.style.right = '0';
-        openBtn.classList.add('open');
-        openBtn.classList.remove('closed');
-        signOutBtn.classList.add('open');
-        signOutBtn.classList.remove('closed');
-    }
+    sidebar.style.right = '0';
+    openBtn.classList.add('open');
+    openBtn.classList.remove('closed');
+    signOutBtn.classList.add('open');
+    updateSignOutBtn();
+}
     function closeSidebar() {
-        sidebar.style.right = '-400px';
-        openBtn.classList.remove('open');
-        openBtn.classList.add('closed');
-        signOutBtn.classList.remove('open');
-        signOutBtn.classList.add('closed');
-    }
+    sidebar.style.right = '-400px';
+    openBtn.classList.remove('open');
+    openBtn.classList.add('closed');
+    signOutBtn.classList.remove('open');
+    updateSignOutBtn();
+}
 
     // Initialize as closed
     openBtn.classList.add('closed');
     signOutBtn.classList.add('closed');
+    updateSignOutBtn();
 
     openBtn.addEventListener('click', () => {
         if (sidebar.style.right === '0px') {
@@ -1028,8 +1032,40 @@
     // Listen for any modal close
     document.body.addEventListener('hidden.bs.modal', () => {
         sidebarBtns.forEach(btn => btn.classList.remove('hide-when-modal'));
+        });
+    // Social Sidebar Toggle Logic
+    const socialSidebarToggle = document.getElementById('socialSidebarToggle');
+    const socialSidebar = document.getElementById('socialSidebar');
+    const openSocialSidebarBtn = document.getElementById('openSocialSidebarBtn');
+    const socialSignOutSidebarBtn = document.getElementById('socialSignOutSidebarBtn');
+
+    // Load setting from localStorage
+    const socialSidebarEnabled = localStorage.getItem('socialSidebarEnabled');
+    if (socialSidebarEnabled === null || socialSidebarEnabled === 'true') {
+        socialSidebarToggle.checked = true;
+        showSocialSidebarUI(true);
+    } else {
+        socialSidebarToggle.checked = false;
+        showSocialSidebarUI(false);
+    }
+
+    socialSidebarToggle.addEventListener('change', (e) => {
+        const enabled = e.target.checked;
+        localStorage.setItem('socialSidebarEnabled', enabled);
+        showSocialSidebarUI(enabled);
     });
-});
+
+    function showSocialSidebarUI(show) {
+        if (show) {
+            if (socialSidebar) socialSidebar.style.display = '';
+            if (openSocialSidebarBtn) openSocialSidebarBtn.style.display = '';
+        } else {
+            if (socialSidebar) socialSidebar.style.display = 'none';
+            if (openSocialSidebarBtn) openSocialSidebarBtn.style.display = 'none';
+            if (socialSignOutSidebarBtn) socialSignOutSidebarBtn.style.display = 'none';
+        }
+    }
+    });
     </script>
 
     <!-- Credits Modal -->
