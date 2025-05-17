@@ -1532,14 +1532,15 @@ input.form-control.form-control-sm::placeholder  {
 
 /* Social Sidebar Button */
 
+/* ...existing code... */
 .social-sidebar-btn {
     position: absolute;
     top: 50%;
     right: 0px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(1);
     z-index: 1100;
-    width: 64px;
-    height: 64px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     display: flex;
     align-items: center;
@@ -1547,37 +1548,47 @@ input.form-control.form-control-sm::placeholder  {
     border: none;
     background: var(--bs-primary, #0d6efd);
     color: var(--bs-light, #fff);
-    font-size: 2.2rem;
-    border-top-left-radius: 32px;
-    border-bottom-left-radius: 32px;
+    font-size: 1.5rem;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    transition: right 0.3s, background 0.2s, color 0.2s;
+    transition: right 0.3s, background 0.2s, color 0.2s, transform 0.2s cubic-bezier(.4,2,.6,1);
     cursor: pointer;
 }
-.social-sidebar-btn:hover,
-.social-sidebar-btn:focus {
-    background: var(--bs-primary-dark, #0056b3);
-    color: var(--bs-light, #fff);
-}
+
 .social-sidebar-btn.open {
-    right: 400px; /* Move with sidebar width */
+    right: 400px;
+    transform: translateY(-50%) scale(1.25);
 }
 
+.social-sidebar-btn.closed {
+    transform: translateY(-50%) scale(1);
+}
+.social-sidebar-btn.closed:hover,
+.social-sidebar-btn.closed:focus {
+    background: var(--bs-primary-dark, #0056b3);
+    color: var(--bs-light, #fff);
+    transform: translateY(-50%) scale(1.25);
+}
+
+/* Responsive: smaller button on mobile */
 @media (max-width: 500px) {
     .social-sidebar-btn {
         right: -8px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.4rem;
-        border-top-left-radius: 24px;
-        border-bottom-left-radius: 24px;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        border-top-left-radius: 18px;
+        border-bottom-left-radius: 18px;
     }
     .social-sidebar-btn.open {
         right: 100vw;
+        transform: translateY(-50%) scale(1.25);
     }
 }
+/* ...existing code... */
 
 /* Dark mode adjustments */
 body.dark-mode .social-sidebar-btn {
@@ -1592,7 +1603,7 @@ body.dark-mode .social-sidebar-btn:focus {
 }
 
 .social-sidebar {
-    background: #808080 !important; /* Softer light gray background */
+    background: #ffffff !important; /* Softer light gray background */
     color: #0d6efd;      /* Blue text */
     box-shadow: -2px 0 8px rgba(0,0,0,0.15);
     min-width: 320px;

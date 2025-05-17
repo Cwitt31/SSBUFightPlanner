@@ -594,23 +594,27 @@
             <!-- Social Sidebar Tabs -->
             <ul class="nav nav-tabs nav-justified" id="socialSidebarTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-pane" type="button" role="tab">
-                        <i class="bi bi-person-circle"></i> Profile
+                    <button class="nav-link active d-flex flex-column align-items-center" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-pane" type="button" role="tab">
+                        <i class="bi bi-person-circle mb-1" style="font-size: 1.5em;"></i>
+                        <span>Profile</span>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-pane" type="button" role="tab">
-                        <i class="bi bi-chat-left-text"></i> Posts
+                    <button class="nav-link d-flex flex-column align-items-center" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-pane" type="button" role="tab">
+                        <i class="bi bi-chat-left-text mb-1" style="font-size: 1.5em;"></i>
+                        <span>Posts</span>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="friends-tab" data-bs-toggle="tab" data-bs-target="#friends-pane" type="button" role="tab">
-                        <i class="bi bi-people"></i> Friends
+                    <button class="nav-link d-flex flex-column align-items-center" id="friends-tab" data-bs-toggle="tab" data-bs-target="#friends-pane" type="button" role="tab">
+                        <i class="bi bi-people mb-1" style="font-size: 1.5em;"></i>
+                        <span>Friends</span>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="find-friend-tab" data-bs-toggle="tab" data-bs-target="#find-friend-pane" type="button" role="tab">
-                        <i class="bi bi-person-plus"></i> Find a Friend
+                    <button class="nav-link d-flex flex-column align-items-center" id="find-friend-tab" data-bs-toggle="tab" data-bs-target="#find-friend-pane" type="button" role="tab">
+                        <i class="bi bi-person-plus mb-1" style="font-size: 1.5em;"></i>
+                        <span>Find a Friend</span>
                     </button>
                 </li>
             </ul>
@@ -791,30 +795,35 @@
     <!-- Social Sidebar Script -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const sidebar = document.getElementById('socialSidebar');
-        const openBtn = document.getElementById('openSocialSidebarBtn');
-        const closeBtn = document.getElementById('closeSocialSidebarBtn');
+    const sidebar = document.getElementById('socialSidebar');
+    const openBtn = document.getElementById('openSocialSidebarBtn');
+    const closeBtn = document.getElementById('closeSocialSidebarBtn');
 
-        function openSidebar() {
-            sidebar.style.right = '0';
-            openBtn.classList.add('open');
-        }
-        function closeSidebar() {
-            sidebar.style.right = '-400px';
-            openBtn.classList.remove('open');
-        }
+    function openSidebar() {
+        sidebar.style.right = '0';
+        openBtn.classList.add('open');
+        openBtn.classList.remove('closed');
+    }
+    function closeSidebar() {
+        sidebar.style.right = '-400px';
+        openBtn.classList.remove('open');
+        openBtn.classList.add('closed');
+    }
 
-        openBtn.addEventListener('click', () => {
-            if (sidebar.style.right === '0px') {
-                closeSidebar();
-            } else {
-                openSidebar();
-            }
-        });
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeSidebar);
+    // Initialize as closed
+    openBtn.classList.add('closed');
+
+    openBtn.addEventListener('click', () => {
+        if (sidebar.style.right === '0px') {
+            closeSidebar();
+        } else {
+            openSidebar();
         }
     });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSidebar);
+    }
+});
     </script>
 
     <!-- Credits Modal -->
