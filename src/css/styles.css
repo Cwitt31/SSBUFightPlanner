@@ -1560,13 +1560,27 @@ input.form-control.form-control-sm::placeholder  {
     cursor: pointer;
 }
 
+.fade-in {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fade-out {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
 .social-sidebar-btn.hide-when-modal {
     display: none !important;
 }
 
 #socialSignOutSidebarBtn {
-    top: 435px; /* just below the open button, adjust as needed */
+    top: 58%; /* just below the open button, adjust as needed */
     background-color: red;
+    position: fixed;
 }
 
 .social-sidebar-btn.open {
@@ -1750,6 +1764,7 @@ body.dark-mode .social-sidebar-btn:hover {
     transition: background 0.2s, color 0.2s;
     z-index: 1060;
 }
+
 .social-sidebar,
 .social-sidebar a,
 .social-sidebar .nav-link,
@@ -1771,7 +1786,7 @@ body.dark-mode .social-sidebar-btn:hover {
 
 /* Dark mode adjustments */
 body.dark-mode .social-sidebar {
-    background: #181a1b !important; /* Very dark background */      /* Bootstrap blue text */
+    background: #181a1b !important; /* Very dark background */
     border-left: 1px solid #222;
     box-shadow: -2px 0 16px rgba(0,0,0,0.35);
 }
@@ -1785,9 +1800,9 @@ body.dark-mode .social-sidebar {
 .social-sidebar .tab-content h6,
 .social-sidebar .tab-content span,
 .social-sidebar .tab-content div,
-.social-sidebar .tab-content p {
-    /* Remove solid color: */
-    /* color: #0d6efd !important; */
+.social-sidebar .tab-content p
+.social-sidebar .tab-content button,
+.social-sidebar .tab-content .btn {
     background: linear-gradient(120deg,
         #fff6c3 0%,
         #f8a6c9 20%,
@@ -1799,8 +1814,17 @@ body.dark-mode .social-sidebar {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent !important;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;      
     animation: textGradientWave 32s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+.social-sidebar .tab-content .form-control {
+    background: transparent !important;
+}
+
+.social-sidebar .tab-content .form-control:focus {
+    background: transparent !important;
+    border-color: none !important;
 }
 
 @keyframes textGradientWave {
@@ -1823,10 +1847,8 @@ body.dark-mode .social-sidebar {
 #socialAuthContainer h6,
 #socialAuthContainer span,
 #socialAuthContainer div,
-#socialAuthContainer p {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
+#socialAuthContainer p 
+#socialAuthContainer label {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
